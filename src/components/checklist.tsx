@@ -1,7 +1,20 @@
+import { useState } from "react";
 import type { Pair } from "../components/editlist";
 
 export default function Checklist(props: { list: Pair[], setList: (list: Pair[]) => void }) {
   // Get list items from editlist
+
+
+  function handleChange(index: number, checked: boolean) {
+    // Update list with new checked value
+    props.setList(props.list.map((pair, i) => {
+      if (i === index) {
+        pair.checked = !checked;
+        return pair;
+      }
+      return pair;
+    }));
+  }
 
   if (props.list.length === 0) {
     return (
@@ -17,7 +30,7 @@ export default function Checklist(props: { list: Pair[], setList: (list: Pair[])
         {props.list.map(({item, checked}, index) => (
           <li className="flex flex-col px-2 py-1" key={`${index}${item}`}>
             <div className="flex flex-row justify-between items-center">
-              <input type="checkbox"/>
+              <input type="checkbox" checked={checked} onChange={() => handleChange(index, checked)}/>
               <h3>{item}</h3>
             </div>
             {(index !== props.list.length - 1) ? <hr className="border-gray-400 mt-[0.5rem]" /> : null}
