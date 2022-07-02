@@ -4,7 +4,7 @@ export type Pair = {item: string, checked: boolean}
 
 export default function EditList(props: { list: Pair[], setList: (list: Pair[]) => void }) {
 
-  // Manage the state of the list
+  // Variable storing new item
   const [newItem, setNewItem] = useState("");
 
   function removeItem(index: number) {
@@ -23,6 +23,7 @@ export default function EditList(props: { list: Pair[], setList: (list: Pair[]) 
           <button 
             className="outline hover:bg-slate-400 duration-100 rounded-xl px-2 py-1" 
             onClick={() => {
+              // Add new item to list and have it update the state of the list
               props.setList([{item: newItem, checked: false}, ...props.list])
               setNewItem("");
             }}>
@@ -41,8 +42,7 @@ export default function EditList(props: { list: Pair[], setList: (list: Pair[]) 
             </li>
           ))}
         </ul>
-      ): null}
-            
+      ): null}           
     </div>
     )
 }

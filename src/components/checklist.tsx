@@ -2,9 +2,6 @@ import { useState } from "react";
 import type { Pair } from "../components/editlist";
 
 export default function Checklist(props: { list: Pair[], setList: (list: Pair[]) => void }) {
-  // Get list items from editlist
-
-
   function handleChange(index: number, checked: boolean) {
     // Update list with new checked value
     props.setList(props.list.map((pair, i) => {
@@ -16,6 +13,7 @@ export default function Checklist(props: { list: Pair[], setList: (list: Pair[])
     }));
   }
 
+  // Handle empty list case
   if (props.list.length === 0) {
     return (
       <div className="flex flex-col">

@@ -8,8 +8,10 @@ import type { viewMode } from "../components/navbar";
 import type { Pair } from "../components/editlist";
 
 const Home: NextPage = () => {
-  // Manage state of app with bool for edit mode and checklist mode
+  // Manage state of app with edit mode and checklist mode
   const [mode, setMode] = useState<viewMode>("edit");
+
+  // Get list from local storage
   const [list, setList] = useState<Pair[]>(() => {
     const list = localStorage.getItem("list");
     if (list) {
@@ -18,6 +20,7 @@ const Home: NextPage = () => {
     return [];
   });
 
+  // Save list to local storage
   useEffect(() => {
     localStorage.setItem("list", JSON.stringify(list));
   }, [list]);
