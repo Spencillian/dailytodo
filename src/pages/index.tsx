@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EditList from "../components/editlist";
 import Navbar from "../components/navbar";
 import Checklist from "../components/checklist";
@@ -10,7 +10,17 @@ import type { Pair } from "../components/editlist";
 const Home: NextPage = () => {
   // Manage state of app with bool for edit mode and checklist mode
   const [mode, setMode] = useState<viewMode>("edit");
-  const [list, setList] = useState<Pair[]>([]);
+  const [list, setList] = useState<Pair[]>(() => {
+    const list = localStorage.getItem("list");
+    if (list) {
+      return JSON.parse(list);
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("list", JSON.stringify(list));
+  }, [list]);
 
   return (
     <>
