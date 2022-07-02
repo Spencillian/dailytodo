@@ -7,9 +7,9 @@ export default function EditList(props: { list: Pair[], setList: (list: Pair[]) 
   // Manage the state of the list
   const [newItem, setNewItem] = useState("");
 
-  function removeItem(item: string) {
+  function removeItem(index: number) {
     // Remove item from list and have it update the state of the list
-    props.setList(props.list.filter(pair => pair.item !== item))
+    props.setList(props.list.filter((_, i) => i !== index));
   }
 
   return (
@@ -35,7 +35,7 @@ export default function EditList(props: { list: Pair[], setList: (list: Pair[]) 
             <li className="flex flex-col px-2 py-1" key={`${index}${item}`}>
               <div className="flex flex-row justify-between">
                 <h3 className="" >{item}</h3>
-                  <button className="justify-end" onClick={() => removeItem(item)}>Remove</button>
+                <button className="justify-end" onClick={() => removeItem(index)}>Remove</button>
               </div>
               {(index !== props.list.length - 1) ? <hr className="border-gray-400 mt-[0.5rem]" /> : null}
             </li>
@@ -45,7 +45,4 @@ export default function EditList(props: { list: Pair[], setList: (list: Pair[]) 
             
     </div>
     )
-    // Input
-    // Add item button
-    // Delete item button
 }

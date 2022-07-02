@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useState } from "react";
 import EditList from "../components/editlist";
 import Navbar from "../components/navbar";
+import Checklist from "../components/checklist";
 import type { viewMode } from "../components/navbar";
 import type { Pair } from "../components/editlist";
 
@@ -20,7 +21,7 @@ const Home: NextPage = () => {
       </Head>
       <div className="flex flex-col items-center">
         <Navbar currentMode={mode} changeMode={setMode}/>
-        {mode === "edit" ? <EditList list={list} setList={setList}/> : null}
+        {mode === "edit" ? <EditList list={list} setList={setList}/> : <Checklist list={list} setList={setList}/>}
       </div>
     </>
   );
