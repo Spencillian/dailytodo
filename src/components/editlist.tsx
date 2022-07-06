@@ -14,7 +14,7 @@ export default function EditList(props: { list: Pair[], setList: (list: Pair[]) 
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-row">
+      <div className="flex flex-row justify-center">
         <input 
           className="outline rounded-xl mr-3 px-2" 
           value={newItem} 
@@ -31,11 +31,11 @@ export default function EditList(props: { list: Pair[], setList: (list: Pair[]) 
           </button>
       </div>
       {props.list.length > 0 ? (
-        <ul className="outline rounded-xl mt-2 py-1">
+        <ul className="outline rounded-xl mt-2 py-1 min-w-[25rem]">
           {props.list.map(({item, checked}, index) => (
             <li className="flex flex-col px-2 py-1" key={`${index}${item}`}>
               <div className="flex flex-row justify-between">
-                <h3 className="" >{item}</h3>
+                <h3 className="max-w-[20rem] break-words" >{item}</h3>
                 <button className="justify-end" onClick={() => removeItem(index)}>Remove</button>
               </div>
               {(index !== props.list.length - 1) ? <hr className="border-gray-400 mt-[0.5rem]" /> : null}

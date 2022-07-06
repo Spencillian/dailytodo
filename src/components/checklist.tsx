@@ -1,4 +1,3 @@
-import { useState } from "react";
 import type { Pair } from "../components/editlist";
 
 export default function Checklist(props: { list: Pair[], setList: (list: Pair[]) => void }) {
@@ -23,13 +22,13 @@ export default function Checklist(props: { list: Pair[], setList: (list: Pair[])
   }
 
   return(
-    <div className="flex flex-col min-w-[15rem] outline rounded-xl">
+    <div className="flex flex-col min-w-[25rem] outline rounded-xl">
       <ul className="my-1">
         {props.list.map(({item, checked}, index) => (
           <li className="flex flex-col px-2 py-1" key={`${index}${item}`}>
             <div className="flex flex-row justify-between items-center">
+              <h3 className="break-words max-w-[20rem]">{item}</h3>
               <input type="checkbox" checked={checked} onChange={() => handleChange(index, checked)}/>
-              <h3>{item}</h3>
             </div>
             {(index !== props.list.length - 1) ? <hr className="border-gray-400 mt-[0.5rem]" /> : null}
           </li>
