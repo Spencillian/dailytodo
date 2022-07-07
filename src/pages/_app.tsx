@@ -8,6 +8,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 
 export default dynamic(() => Promise.resolve(MyApp), {
-  ssr: false, // DIsable SSR
+  ssr: false, // Disable SSR
 }) as NextPage<AppProps>;
 
