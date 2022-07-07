@@ -37,7 +37,4 @@ yarn-error.log*
 
 *.config.js
 .env-example
-.eslintrc.json
-.vscode/
-*.d.ts
-tsconfig.json
+
